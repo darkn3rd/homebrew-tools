@@ -7,12 +7,7 @@ A small Homebrew tap for casks/formulae that don't have another home.
 ### powershell-pkg
 
 Microsoft's PowerShell, installed from the official signed `.pkg` released
-directly by the PowerShell team. Named `powershell-pkg`, not `powershell` -
-homebrew/core now has its own `powershell` formula, so this tap's own token
-has to be disambiguated from it (Homebrew's own convention for a cask that
-overlaps with an existing core package - see e.g. `wireshark-app`,
-`docker-desktop`). The `-pkg` suffix names the actual difference: this is
-the vendor's signed `.pkg` installer, not a from-source formula build.
+directly by the PowerShell team.
 
 **Why this exists:** Homebrew removed the official `powershell` cask
 ([Homebrew/homebrew-cask#251326](https://github.com/Homebrew/homebrew-cask/pull/251326))
