@@ -17,6 +17,8 @@ cask "powershell" do
     regex(/^v?(\d+(?:\.\d+)+)$/i)
   end
 
+  depends_on :macos
+
   pkg "powershell-#{version}-osx-#{arch}.pkg"
 
   uninstall pkgutil: "com.microsoft.powershell"
