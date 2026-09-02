@@ -32,10 +32,17 @@ jobs:
         id: git_setup
         uses: Homebrew/actions/git-user-config@3cdb78d0f62ad29dd32de765782654f4eedea607 # 2026.08.31.1
 
-      - name: Bump formulae
+      # --formulae (the tap-new default) finds nothing at all in a
+      #  cask-only tap like this one - confirmed directly, `brew bump
+      #  --formulae --tap=darkn3rd/tools` prints nothing, while `brew
+      #  bump --casks --tap=darkn3rd/tools` correctly finds powershell-
+      #  pkg via its own livecheck block. No type flag at all (as
+      #  below) checks both, so this doesn't need editing again if a
+      #  formula ever gets added to this tap.
+      - name: Bump formulae and casks
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HOMEBREW_GIT_COMMITTER_NAME: ${{ steps.git_setup.outputs.name }}
           HOMEBREW_GIT_COMMITTER_EMAIL: ${{ steps.git_setup.outputs.email }}
           TAP_NAME: ${{ steps.set-up-homebrew.outputs.tap-name }}
-        run: brew bump --no-fork --open-pr --formulae --bump-synced --tap="$TAP_NAME"
+        run: brew bump --no-fork --open-pr --bump-synced --tap="$TAP_NAME"
