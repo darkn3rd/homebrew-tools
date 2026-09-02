@@ -4,10 +4,15 @@ A small Homebrew tap for casks/formulae that don't have another home.
 
 ## Casks
 
-### powershell
+### powershell-pkg
 
 Microsoft's PowerShell, installed from the official signed `.pkg` released
-directly by the PowerShell team.
+directly by the PowerShell team. Named `powershell-pkg`, not `powershell` -
+homebrew/core now has its own `powershell` formula, so this tap's own token
+has to be disambiguated from it (Homebrew's own convention for a cask that
+overlaps with an existing core package - see e.g. `wireshark-app`,
+`docker-desktop`). The `-pkg` suffix names the actual difference: this is
+the vendor's signed `.pkg` installer, not a from-source formula build.
 
 **Why this exists:** Homebrew removed the official `powershell` cask
 ([Homebrew/homebrew-cask#251326](https://github.com/Homebrew/homebrew-cask/pull/251326))
@@ -38,21 +43,21 @@ over passes the exact check it was supposedly failing.
 ## How do I install these?
 
 ```
-brew install --cask darkn3rd/tools/powershell
+brew install --cask darkn3rd/tools/powershell-pkg
 ```
 
 Or tap first, then install by name:
 
 ```
 brew tap darkn3rd/tools
-brew install --cask powershell
+brew install --cask powershell-pkg
 ```
 
 Or, in a `brew bundle` `Brewfile`:
 
 ```ruby
 tap "darkn3rd/tools"
-cask "powershell"
+cask "powershell-pkg"
 ```
 
 ## License
@@ -64,7 +69,7 @@ That does **not** cover the software each cask installs - Cask DSL has no
 `license` stanza to declare this per-cask (unlike Formula, which does), so
 it's noted here instead:
 
-* **powershell** - [MIT License](https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt), Microsoft/PowerShell.
+* **powershell-pkg** - [MIT License](https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt), Microsoft/PowerShell.
 
 ## Documentation
 

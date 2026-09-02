@@ -1,6 +1,6 @@
 # PowerShell itself is MIT-licensed (Microsoft/PowerShell) - see
 #  https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt.
-cask "powershell" do
+cask "powershell-pkg" do
   arch arm: "arm64", intel: "x64"
 
   version "7.6.5"
